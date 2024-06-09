@@ -7,11 +7,12 @@ Here's the steps to run the project:
 5. Inside the server folder, create a `.env` file and define the environment variables as shown in the `example.env`.
 6. Inside the server folder, create one more folder in the root directory and name it `uploads`.
 7. Inside the `uploads` folder, create four more folders and name them as follows: `users`, `products`, `categories`, `banners`.
-8. Create a MongoDB database and pass the connection string to MONGO_URI, and pass your database name to the DB_NAME variable inside the .env file.
-9. You can use the same Stripe key and secret code mentioned in the `example.env`, or you can create and define your own.
-10. After following all the first 9 steps, you can run this project by executing the command `npm start`.
-11. To start the client, navigate to the client folder by running `cd ../client` and then run `npm start`.
-12. To start the server, navigate to the server folder by running `cd server` and then run `npm start`.
+8. Pass the path of the uploads folder to the FILES_UPLOADS_PATH variable inside the .env file. There is no need to include the subfolder paths of uploads.
+9. Create a MongoDB database and pass the connection string to MONGO_URI, and pass your database name to the DB_NAME variable inside the .env file.
+10. You can use the same Stripe key and secret code mentioned in the `example.env`, or you can create and define your own.
+11. After following all the first 9 steps, you can run this project by executing the command `npm start`.
+12. To start the client, navigate to the client folder by running `cd ../client` and then run `npm start`.
+13. To start the server, navigate to the server folder by running `cd server` and then run `npm start`.
 
 These steps should help you set up and run the project successfully. If you encounter any issues, feel free to ask for further assistance!
 +94727920628
