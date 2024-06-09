@@ -32,7 +32,7 @@ export const register = asyncHandler(async (req, res, next) => {
     email,
     password,
     confirmPassword,
-    role, // Assign the role
+    role,
   });
 
   // Generate and send token to response
