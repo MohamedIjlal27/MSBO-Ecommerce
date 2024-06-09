@@ -1,12 +1,12 @@
 // /products?sort=+price&limit=30&keyword=mist&page=1&price[lte]=100&price[gt]=0&ratingAverage[lte]=1&ratingAverage[gte]=0&category=63292e769de7cef23355a197&category=63292e769de7cef23355a195
-import {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllProducts} from "../../../features/products/productsServices";
-import {resetMutationResult} from "../../../features/products/productsSlice";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllProducts } from "../../../features/products/productsServices";
+import { resetMutationResult } from "../../../features/products/productsSlice";
 
 const useGetProducts = (limit = 8) => {
   const dispatch = useDispatch();
-  const {allProducts, isMutation} = useSelector((state) => state.products);
+  const { allProducts, isMutation } = useSelector((state) => state.products);
   // console.log(allProducts);
 
   // LIMIT

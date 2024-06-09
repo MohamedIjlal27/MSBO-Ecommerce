@@ -1,7 +1,7 @@
 import React from "react";
 import RatingStars from "../../Shared/RatingStars";
-import {LinkContainer} from "react-router-bootstrap";
-import {ProductItemStyled} from "./styles";
+import { LinkContainer } from "react-router-bootstrap";
+import { ProductItemStyled } from "./styles";
 import ImageLoader from "../../Loaders/ImgLoader";
 
 const ProductCard = ({
@@ -47,7 +47,7 @@ const ProductCard = ({
 
         <div className="info-box d-flex flex-column p-3">
           {/* Name */}
-          <h5 style={{height: "29px", fontSize: "14px"}}>
+          <h5 style={{ height: "29px", fontSize: "14px" }}>
             {name.length > 20 ? name.slice(0, 20) + "..." : name}
           </h5>
 
@@ -58,10 +58,10 @@ const ProductCard = ({
           </div>
           {/* Price&Discount */}
           <div className="d-flex justify-content-between">
-            <span style={{color: "#ff6262"}}>${price - discount}</span>
+            <span style={{ color: "#ff6262" }}>Rs{price - discount}</span>
             {discount > 0 && (
               <span className="text-muted text-decoration-line-through">
-                ${price}
+                Rs{price}
               </span>
             )}
           </div>

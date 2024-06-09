@@ -1,16 +1,16 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
-import {Alert, Badge, Col, Container, Row} from "reactstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { Alert, Badge, Col, Container, Row } from "reactstrap";
 import BlockLoader from "../../../common/components/Loaders/BlockLoader";
 import PageHelmet from "../../../common/components/Shared/PageHelmet";
-import {getOrderDetails} from "../../../features/orders/ordersServices";
-import {resetMutationResult} from "../../../features/orders/ordersSlice";
+import { getOrderDetails } from "../../../features/orders/ordersServices";
+import { resetMutationResult } from "../../../features/orders/ordersSlice";
 
 const OrderDetails = () => {
-  const {orderId} = useParams();
+  const { orderId } = useParams();
   const dispatch = useDispatch();
-  const {isMutation, orderDetails} = useSelector((state) => state.orders);
+  const { isMutation, orderDetails } = useSelector((state) => state.orders);
   console.log(orderDetails);
   useEffect(() => {
     if (isMutation.success) {
@@ -32,7 +32,7 @@ const OrderDetails = () => {
               <h3>Order Items</h3>
               <div className="d-flex flex-column gap-3 mb-4">
                 {orderDetails?.order?.cartItems.map(
-                  ({product, price, quantity, color, size}, idx) => (
+                  ({ product, price, quantity, color, size }, idx) => (
                     <div className="d-flex align-items-center gap-2" key={idx}>
                       <img
                         src={product?.image}
@@ -68,7 +68,7 @@ const OrderDetails = () => {
                         </div>
                       )}
                       <span>
-                        ({quantity}) Items X ${price}
+                        ({quantity}) Items X Rs{price}
                       </span>
                     </div>
                   )
@@ -93,10 +93,10 @@ const OrderDetails = () => {
                 <h3>Order Info</h3>
                 <div className="d-flex flex-column gap-3">
                   <div>
-                    <span className="fw-bold">Total Price :</span>&nbsp;$
+                    <span className="fw-bold">Total Price :</span>&nbsp;Rs
                     {orderDetails?.order?.totalOrderPrice}
                   </div>
-                  <span style={{fontSize: "12px"}} className="text-muted">
+                  <span style={{ fontSize: "12px" }} className="text-muted">
                     The price includes tax and shipping price
                   </span>
                   <div className="d-flex">

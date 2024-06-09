@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {Alert, Badge, Table} from "reactstrap";
+import { Link } from "react-router-dom";
+import { Alert, Badge, Table } from "reactstrap";
 import BlockLoader from "../../../common/components/Loaders/BlockLoader";
 import OverlayLoader from "../../../common/components/Loaders/OverlayLoader";
 import PageHelmet from "../../../common/components/Shared/PageHelmet";
@@ -8,7 +8,7 @@ import useGetOrders from "../../../common/hooks/orders/useGetOrders";
 import SideBarLayout from "../../../layout/SideBarLayout";
 
 const Orders = () => {
-  const {allOrders, isMutation} = useGetOrders();
+  const { allOrders, isMutation } = useGetOrders();
 
   return (
     <>
@@ -44,7 +44,7 @@ const Orders = () => {
                         year: "numeric",
                       })}
                     </td>
-                    <td>$ {item.totalOrderPrice}</td>
+                    <td>Rs {item.totalOrderPrice}</td>
                     <td>
                       {item.paymentMethod === "cash" && (
                         <Badge color="primary" className="rounded">

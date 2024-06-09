@@ -1,18 +1,20 @@
 import React from "react";
-import {BsTrash} from "react-icons/bs";
-import {useDispatch} from "react-redux";
-import {LinkContainer} from "react-router-bootstrap";
-import {Col, Row} from "reactstrap";
+import { BsTrash } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
+import { Col, Row } from "reactstrap";
 import {
   removeFromCart,
   updateCartItemQty,
 } from "../../../../features/cart/cartServices";
 
-const CartItemCard = ({item: {color, price, product, quantity, size, _id}}) => {
+const CartItemCard = ({
+  item: { color, price, product, quantity, size, _id },
+}) => {
   const dispatch = useDispatch();
 
   return (
-    <div style={{position: "relative"}}>
+    <div style={{ position: "relative" }}>
       {/* Remove Icon */}
       <div
         style={{
@@ -34,14 +36,18 @@ const CartItemCard = ({item: {color, price, product, quantity, size, _id}}) => {
       <Row
         xs={5}
         className="cart-item mb-3 py-3 bg-light rounded align-items-center"
-        style={{position: "relative"}}
+        style={{ position: "relative" }}
       >
         {/* Image */}
         <Col className="text-center">
           <img
             src={product?.image}
             alt="product-img"
-            style={{objectFit: "contain", maxWidth: "100%", maxHeight: "90px"}}
+            style={{
+              objectFit: "contain",
+              maxWidth: "100%",
+              maxHeight: "90px",
+            }}
           />
         </Col>
 
@@ -49,7 +55,7 @@ const CartItemCard = ({item: {color, price, product, quantity, size, _id}}) => {
         <Col className="text-center">
           <LinkContainer
             to={`/products/${product?._id}`}
-            style={{cursor: "pointer"}}
+            style={{ cursor: "pointer" }}
           >
             <h6>{product?.name}</h6>
           </LinkContainer>
@@ -91,11 +97,14 @@ const CartItemCard = ({item: {color, price, product, quantity, size, _id}}) => {
               id="qtySelect"
               name="select"
               type="select"
-              style={{padding: "10px 10px"}}
+              style={{ padding: "10px 10px" }}
               value={quantity}
               onChange={(e) =>
                 dispatch(
-                  updateCartItemQty({cartItemId: _id, quantity: e.target.value})
+                  updateCartItemQty({
+                    cartItemId: _id,
+                    quantity: e.target.value,
+                  })
                 )
               }
             >
@@ -108,7 +117,7 @@ const CartItemCard = ({item: {color, price, product, quantity, size, _id}}) => {
           )}
         </Col>
         <Col className="text-center">
-          {price && <span style={{color: "red"}}>$ {price}</span>}
+          {price && <span style={{ color: "red" }}>Rs {price}</span>}
         </Col>
       </Row>
     </div>

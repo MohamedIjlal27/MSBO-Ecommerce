@@ -1,22 +1,22 @@
-import React, {useState} from "react";
-import {MdDelete, MdEdit} from "react-icons/md";
-import {Link} from "react-router-dom";
-import {Alert, Badge} from "reactstrap";
+import React, { useState } from "react";
+import { MdDelete, MdEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { Alert, Badge } from "reactstrap";
 import OverlayLoader from "../../../common/components/Loaders/OverlayLoader";
 import PageHelmet from "../../../common/components/Shared/PageHelmet";
 import useGetProducts from "../../../common/hooks/products/useGetProducts";
 import DashboardLayout from "../../../layout/DashboardLayout";
 import PaginateTable from "../../../common/components/Shared/PaginateTable";
-import {CreateProductModal, UpdateProductModal} from "./MutateModals";
+import { CreateProductModal, UpdateProductModal } from "./MutateModals";
 import DashboardHead from "../../../common/components/Heads/DashboardHead";
 import useMutateProducts from "../../../common/hooks/products/useMutateProducts";
 import useGetCategories from "../../../common/hooks/categories/useGetCategories";
 
 const Products = () => {
   /*____ALL_PRODUCTS____*/
-  const {allProducts, isMutation, handlePagination} = useGetProducts(5);
+  const { allProducts, isMutation, handlePagination } = useGetProducts(5);
   /*____ALL_CATEGORIES____*/
-  const {allCategories} = useGetCategories();
+  const { allCategories } = useGetCategories();
 
   /*____UPDATE_MODAL____*/
   const [updateModal, setUpdateModal] = useState(false);
@@ -26,7 +26,7 @@ const Products = () => {
   const toggleCreateModal = () => setCreateModal(!createModal);
 
   /*____MUTATION_HANDLERS___*/
-  const {handleDeleteProduct} = useMutateProducts();
+  const { handleDeleteProduct } = useMutateProducts();
 
   //_PRODUCT_TO_UPDATE
   const [product, setProduct] = useState(null);
@@ -89,7 +89,7 @@ const Products = () => {
                 <tbody>
                   {allProducts.products.map((item) => (
                     <tr key={item._id}>
-                      <td style={{fontSize: "11px"}}>
+                      <td style={{ fontSize: "11px" }}>
                         <Link to={`/products/${item._id}`}>{item._id}</Link>
                       </td>
                       <td>
@@ -98,24 +98,26 @@ const Products = () => {
                           alt="category-img"
                           width={50}
                           height={50}
-                          style={{objectFit: "contain"}}
+                          style={{ objectFit: "contain" }}
                         />
                       </td>
-                      <td style={{fontSize: "13px", fontStyle: "italic"}}>
+                      <td style={{ fontSize: "13px", fontStyle: "italic" }}>
                         {item.name.toUpperCase()}
                       </td>
-                      <td style={{fontSize: "13px", color: "red"}}>
+                      <td style={{ fontSize: "13px", color: "red" }}>
                         ${item.price}
                       </td>
-                      <td style={{fontSize: "13px", color: "gray"}}>
-                        {item.discount === 0 ? "_" : `$${item.discount}`}
+                      <td style={{ fontSize: "13px", color: "gray" }}>
+                        {item.discount === 0 ? "_" : `Rs${item.discount}`}
                       </td>
-                      <td style={{fontSize: "13px"}}>
+                      <td style={{ fontSize: "13px" }}>
                         <Badge color="info">{item?.category?.name}</Badge>
                       </td>
-                      <td style={{fontSize: "13px"}}>{item.quantityInStock}</td>
-                      <td style={{fontSize: "13px"}}>{item.sold}</td>
-                      <td style={{fontSize: "13px"}}>{item.ratingAverage}</td>
+                      <td style={{ fontSize: "13px" }}>
+                        {item.quantityInStock}
+                      </td>
+                      <td style={{ fontSize: "13px" }}>{item.sold}</td>
+                      <td style={{ fontSize: "13px" }}>{item.ratingAverage}</td>
                       <td>
                         <MdEdit
                           size={25}

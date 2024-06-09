@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
-import {getProductDetails} from "../../../../features/products/productsServices";
-import {useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect } from "react";
+import { getProductDetails } from "../../../../features/products/productsServices";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
   Badge,
@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import BlockLoader from "../../../../common/components/Loaders/BlockLoader";
 import ProductDetailsCarousel from "../../../../common/components/Carousel/ProductDetailsCarousel";
-import {AiOutlineHeart, AiFillHeart} from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import useWishlist from "../../../../common/hooks/wishlist/useWishlist";
 import RatingStars from "../../../../common/components/Shared/RatingStars";
 import ProductsTabbedSection from "./ProductsTabbedSection";
@@ -24,13 +24,13 @@ import useAddToCart from "../../../../common/hooks/cart/useAddToCart";
 
 const ProductInfoSection = () => {
   const dispatch = useDispatch();
-  const {productId} = useParams();
+  const { productId } = useParams();
 
   //PRODUCT_DETAILS
   useEffect(() => {
     dispatch(getProductDetails(productId));
   }, [productId, dispatch]);
-  const {productDetails} = useSelector((state) => state.products);
+  const { productDetails } = useSelector((state) => state.products);
   //WISHLIST
   const {
     userWishList,
@@ -155,14 +155,14 @@ const ProductInfoSection = () => {
                 </ListGroupItem>
                 {/* Price - Discount */}
                 <ListGroupItem>
-                  <span style={{color: "#ff6262"}}>
-                    $
+                  <span style={{ color: "#ff6262" }}>
+                    Rs
                     {productDetails?.product?.price -
                       productDetails?.product?.discount}
                   </span>{" "}
                   {productDetails?.product?.discount > 0 && (
                     <span className="text-muted text-decoration-line-through">
-                      ${productDetails?.product?.price}
+                      Rs{productDetails?.product?.price}
                     </span>
                   )}
                 </ListGroupItem>
@@ -271,7 +271,7 @@ const ProductInfoSection = () => {
                             id="qtySelect"
                             name="select"
                             type="select"
-                            style={{padding: "10px 10px", width: "100%"}}
+                            style={{ padding: "10px 10px", width: "100%" }}
                             onChange={(e) => handleQtyClick(e.target.value)}
                           >
                             {[

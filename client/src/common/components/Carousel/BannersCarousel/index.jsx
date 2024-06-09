@@ -1,11 +1,11 @@
 import React from "react";
-import {Carousel} from "react-responsive-carousel";
-import {Alert} from "reactstrap";
+import { Carousel } from "react-responsive-carousel";
+import { Alert } from "reactstrap";
 import useGetBanners from "../../../hooks/banners/useGetBanners";
 import BlockLoader from "../../Loaders/BlockLoader";
 
 const BannersCarousel = () => {
-  const {allBanners} = useGetBanners();
+  const { allBanners } = useGetBanners();
 
   return (
     <>
@@ -16,7 +16,7 @@ const BannersCarousel = () => {
       ) : (
         <>
           <Carousel
-            showArrows={false}
+            showArrows={true}
             showStatus={false}
             showThumbs={false}
             transitionTime={800}

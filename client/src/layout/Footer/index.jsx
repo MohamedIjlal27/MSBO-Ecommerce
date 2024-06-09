@@ -93,14 +93,14 @@ const Footer = () => {
 
       {/* MadeText */}
       <div className="text-center p-3 bg-light mt-3">
-        Made with <AiTwotoneHeart color="red" />{" "}
+        Made by <AiTwotoneHeart color="red" />{" "}
         <a
           className="text-decoration-none fw-bolder"
           href="https:github.com/omar1Mayallo"
           target={"_blank"}
           rel="noreferrer"
         >
-          OTM
+          Mohamed Ijlal
         </a>
       </div>
     </footer>

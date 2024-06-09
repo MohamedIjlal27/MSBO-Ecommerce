@@ -1,17 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import OverlayLoader from "../../../../common/components/Loaders/OverlayLoader";
 import useUserCart from "../../../../common/hooks/cart/useUserCart";
-import {Col, Row, Button, Alert, Input, Form} from "reactstrap";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { Col, Row, Button, Alert, Input, Form } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import CartItemCard from "../../../../common/components/Cards/CartItemCard";
-import {Link} from "react-router-dom";
-import {applyCoupon, clearCart} from "../../../../features/cart/cartServices";
+import { Link } from "react-router-dom";
+import { applyCoupon, clearCart } from "../../../../features/cart/cartServices";
 import pushNotification from "../../../../common/components/Shared/Notification";
 const CartItemsSection = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {userCart, isMutation} = useUserCart();
+  const { userCart, isMutation } = useUserCart();
   //HANDLE_COUPON
   const [couponCode, setCouponCode] = useState("");
   const [productId, setProductId] = useState("");
@@ -20,7 +20,7 @@ const CartItemsSection = () => {
     if (!couponCode || !productId) {
       pushNotification("Please enter a coupon code and product Id", "error");
     } else {
-      dispatch(applyCoupon({productId, couponCode}));
+      dispatch(applyCoupon({ productId, couponCode }));
     }
     setCouponCode("");
     setProductId("");
@@ -39,7 +39,7 @@ const CartItemsSection = () => {
                   {["Image", "Name", "Features", "Qty", "Price"].map(
                     (item, idx) => (
                       <Col className="text-center py-3" key={idx}>
-                        <h6 className="m-0" style={{letterSpacing: "0.5px"}}>
+                        <h6 className="m-0" style={{ letterSpacing: "0.5px" }}>
                           {item}
                         </h6>
                       </Col>
@@ -97,11 +97,11 @@ const CartItemsSection = () => {
                           : "black",
                       }}
                     >
-                      Cart Subtotal: $ {userCart.cart?.totalPrice}
+                      Cart Subtotal: Rs {userCart.cart?.totalPrice}
                     </p>
                     {userCart.cart?.totalPriceAfterCouponDiscount > 0 && (
-                      <p style={{color: "red", fontFamily: "sans-serif"}}>
-                        Cart Subtotal After Discount: ${" "}
+                      <p style={{ color: "red", fontFamily: "sans-serif" }}>
+                        Cart Subtotal After Discount: Rs{" "}
                         {userCart.cart?.totalPriceAfterCouponDiscount}
                       </p>
                     )}

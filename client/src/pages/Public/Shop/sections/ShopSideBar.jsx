@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import CollapseItem from "../../../../common/components/Shared/CollapseItem";
 import RangeSlider from "react-bootstrap-range-slider";
-import {Alert, Button, Form, Input} from "reactstrap";
-import {starsSettings} from "../helpers.js";
+import { Alert, Button, Form, Input } from "reactstrap";
+import { starsSettings } from "../helpers.js";
 import ReactStars from "react-rating-stars-component";
 import useGetCategories from "../../../../common/hooks/categories/useGetCategories";
 const ShopSideBar = ({
@@ -12,7 +12,7 @@ const ShopSideBar = ({
   handleCategory,
 }) => {
   //CATEGORIES
-  const {allCategories} = useGetCategories();
+  const { allCategories } = useGetCategories();
 
   //HANDLE_COLLAPSES
   const [categoryIsOpen, setCategoryIsOpen] = useState(false);
@@ -44,7 +44,7 @@ const ShopSideBar = ({
           min={0}
           max={4000}
           tooltip="on"
-          tooltipLabel={(currentValue) => `${currentValue} $`}
+          tooltipLabel={(currentValue) => `${currentValue} Rs`}
           tooltipPlacement="top"
           step={50}
         />
@@ -68,7 +68,7 @@ const ShopSideBar = ({
               />
               <div
                 className="filter-cat ms-2"
-                style={{textTransform: "capitalize"}}
+                style={{ textTransform: "capitalize" }}
               >
                 {item.name}
               </div>
@@ -106,7 +106,7 @@ const ShopSideBar = ({
             />
             <div className="ms-2 d-flex align-items-center">
               <ReactStars {...setting} />
-              <span className="text-muted" style={{fontSize: "13px"}}>
+              <span className="text-muted" style={{ fontSize: "13px" }}>
                 ({setting.value - 1}&#8594;{setting.value})
               </span>
             </div>

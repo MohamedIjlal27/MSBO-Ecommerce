@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -11,11 +11,11 @@ import {
   Spinner,
 } from "reactstrap";
 import PageHelmet from "../../../common/components/Shared/PageHelmet";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import pushNotification from "../../../common/components/Shared/Notification";
 import PageBreadcrumbs from "../../../common/components/Shared/PageBreadcrumbs";
-import {createShippingAddress} from "../../../features/address/addressSlice";
+import { createShippingAddress } from "../../../features/address/addressSlice";
 import useUserCart from "../../../common/hooks/cart/useUserCart";
 import paymentMethods from "../../../assets/imgs/payment-method.png";
 import {
@@ -32,7 +32,7 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   //USER_CART
-  const {userCart} = useUserCart();
+  const { userCart } = useUserCart();
   // console.log(userCart.cart?.cartItems.length);
 
   //ADDRESS
@@ -47,7 +47,7 @@ const Checkout = () => {
         }
   );
   const handleChange = (e) => {
-    setAddress({...address, [e.target.name]: e.target.value});
+    setAddress({ ...address, [e.target.name]: e.target.value });
   };
 
   //PAYMENT
@@ -58,7 +58,7 @@ const Checkout = () => {
   // console.log(paymentMethod);
 
   //ORDER
-  const {isMutation, sessionUrl} = useSelector((state) => state.orders);
+  const { isMutation, sessionUrl } = useSelector((state) => state.orders);
 
   //HANDLE_CREATE_ORDER
   const handleSubmitOrder = (e) => {
@@ -93,7 +93,7 @@ const Checkout = () => {
       dispatch(
         createCashOrder({
           cartId: userCart.cart?._id,
-          body: {shippingAddress: address},
+          body: { shippingAddress: address },
         })
       );
     } else if (paymentMethod === "card") {
@@ -129,9 +129,9 @@ const Checkout = () => {
       <Container className="py-4">
         <PageBreadcrumbs
           pages={[
-            {page: "Home", link: "/"},
-            {page: "Cart", link: "/cart"},
-            {page: "Checkout", isActive: true},
+            { page: "Home", link: "/" },
+            { page: "Cart", link: "/cart" },
+            { page: "Checkout", isActive: true },
           ]}
         />
         <Row>
@@ -200,12 +200,12 @@ const Checkout = () => {
                       : "black",
                   }}
                 >
-                  Cart Subtotal : ${userCart.cart?.totalPrice}
+                  Cart Subtotal : Rs {userCart.cart?.totalPrice}
                 </span>
                 {userCart.cart?.totalPriceAfterCouponDiscount > 0 && (
                   <span>
                     {" "}
-                    Cart Subtotal After Discount : $
+                    Cart Subtotal After Discount : Rs
                     {userCart.cart?.totalPriceAfterCouponDiscount}
                   </span>
                 )}
