@@ -1,7 +1,7 @@
 import express from "express";
 
-import {login, register, logout} from "../../controller/authController.js";
-import {isAuth} from "../../middleware/auth.middleware.js";
+import { login, register, logout } from "../../controller/authController.js";
+import { isAuth } from "../../middleware/auth.middleware.js";
 import {
   loginValidator,
   registerValidator,

@@ -1,13 +1,16 @@
 import express from "express";
 import path from "path";
-import {fileURLToPath} from "url";
+import { fileURLToPath } from "url";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import routes from "./routes/index.js";
 import GlobalErrorMiddleware from "./middleware/GlobalError.middleware.js";
 import APIError from "./utils/apiError.utils.js";
 import cors from "cors";
-import {webhookCheckout} from "./controller/orderController.js";
+import { webhookCheckout } from "./controller/orderController.js";
+
+import swaggerUi from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
 
 // SECURITY PACKAGES
 import rateLimit from "express-rate-limit";
@@ -19,8 +22,29 @@ import hpp from "hpp";
 //_________ENV_VARIABLES_________//
 dotenv.config();
 
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Ecommerce API",
+      version: "1.0.0",
+      description: "Ecommerce web Application API",
+    },
+    servers: [
+      {
+        url: "http://localhost:4000",
+      },
+    ],
+  },
+  apis: ["./routes/routers/*.js"],
+};
+
+const specs = swaggerJSDoc(options);
+
 //_________EXPRESS_APP_________//
 const app = express();
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 //_________ENABLE_CROSS_ORIGIN_RESOURCES_SHARING_________//
 app.use(cors());
@@ -34,7 +58,7 @@ app.use(express.static(path.join(__dirname, "uploads")));
 //_________STRIPE_WEBHOOK_________//
 app.post(
   "/api/webhook",
-  express.raw({type: "application/json"}),
+  express.raw({ type: "application/json" }),
   webhookCheckout
 );
 

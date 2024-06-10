@@ -5,12 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js",
-    "server:prod": "SET NODE_ENV=production& node server/server.js",
-    "client": "npm start --prefix client",
-    "start:dev": "concurrently \"SET NODE_ENV=production& npm run server\" \"npm run client\"",
-    "data:insert": "node server/data/insert.js",
-    "data:destroy": "node server/data/insert.js -d"
+    "start": "nodemon server.js"
   },
   "author": "OTM",
   "license": "ISC",
@@ -35,6 +30,8 @@
     "multer": "^1.4.5-lts.1",
     "sharp": "^0.31.3",
     "stripe": "^11.11.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "xss-clean": "^0.1.1"
   }
 }
