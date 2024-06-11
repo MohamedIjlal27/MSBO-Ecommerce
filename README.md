@@ -21,3 +21,6 @@ Note:
 
 1. There will be two roles: admin and user. Admins can add, delete, and update products and users. They can also dispatch orders and update delivery statuses.
 2. When you create or register for the first time, the user role will be defined as admin. Afterwards, the user role will default to normal user.
+
+Swagger Api Documentation Link: http://localhost:4000/api-docs/
+To correctly check all the API endpoint documentation, start by logging in using the authentication endpoint. This will generate a JWT. Copy and paste the generated token into the authorization section located at the top left corner.
