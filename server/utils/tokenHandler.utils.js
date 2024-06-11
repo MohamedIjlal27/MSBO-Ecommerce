@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 //_SIGN_TOKEN_//
 export const signToken = (payload) => {
-  return jwt.sign({userId: payload}, process.env.JWT_SECRET, {
+  return jwt.sign({ userId: payload }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE_IN,
   });
 };

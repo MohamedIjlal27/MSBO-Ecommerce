@@ -18,34 +18,15 @@ import helmet from "helmet";
 import xss from "xss-clean";
 import mongoSanitize from "express-mongo-sanitize";
 import hpp from "hpp";
+import setupSwagger from "./utils/swagger.js";
 
 //_________ENV_VARIABLES_________//
 dotenv.config();
 
-const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Ecommerce API",
-      version: "1.0.0",
-      description: "Ecommerce web Application API",
-    },
-    servers: [
-      {
-        url: "http://localhost:4000",
-      },
-    ],
-  },
-  apis: ["./routes/routers/*.js"],
-};
-
-const specs = swaggerJSDoc(options);
-
 //_________EXPRESS_APP_________//
 const app = express();
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-
+setupSwagger(app);
 //_________ENABLE_CROSS_ORIGIN_RESOURCES_SHARING_________//
 app.use(cors());
 app.options("*", cors());
