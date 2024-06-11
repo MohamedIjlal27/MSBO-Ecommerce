@@ -24,3 +24,5 @@ Note:
 
 Swagger Api Documentation Link: http://localhost:4000/api-docs/
 To correctly check all the API endpoint documentation, start by logging in using the authentication endpoint. This will generate a JWT. Copy and paste the generated token into the authorization section located at the top left corner.
+
+I have created a Stripe dummy local environment payment gateway.
